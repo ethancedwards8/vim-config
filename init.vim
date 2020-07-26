@@ -39,8 +39,8 @@ map <C-[> <Esc> <CR>
 map <C-n> :NERDTreeToggle<CR>
 " nnoremap <C-d> :term<CR>
 " Opening nerdtree if no file was opened
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+" autocmd StdinReadPre * let s:std_in=1
+" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 call plug#begin("~/.config/nvim/plugged")
 
