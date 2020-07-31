@@ -35,7 +35,6 @@ autocmd BufWritePost *.tex silent! execute "!pdflatex % >/dev/null 2>&1" | redra
 
 " imap ii <Esc> 
 map <C-s> :w <CR>
-map <C-[> <Esc> <CR>
 map <C-n> :NERDTreeToggle<CR>
 " nnoremap <C-d> :term<CR>
 " Opening nerdtree if no file was opened
