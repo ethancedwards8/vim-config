@@ -73,3 +73,5 @@ Plug 'ap/vim-css-color'
 " Plug 'thosakwe/vim-flutter'
 
 call plug#end()
+
+nnoremap <C-b> :! python %<CR>
