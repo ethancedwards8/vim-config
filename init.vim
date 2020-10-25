@@ -22,7 +22,8 @@ nnoremap <leader>n :FZF<CR>
 nnoremap <leader>e :Explore<CR>
 
 " imap ii <Esc> 
-map <C-{> <Esc> <CR>
+" Useless lol
+" map <C-{> <Esc> <CR>
 map <C-n> :NERDTreeToggle<CR>
 " fugitive mappings
 nnoremap <leader>gc :Gcommit<CR>
@@ -71,3 +72,5 @@ Plug 'lervag/vimtex'
 " Plug 'thosakwe/vim-flutter'
 
 call plug#end()
+
+nnoremap <C-b> :! python %<CR>
