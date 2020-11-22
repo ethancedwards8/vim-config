@@ -42,6 +42,10 @@ nnoremap <leader>gu :Gpush<CR>
 nnoremap <leader>gp :Gpull<CR>
 nnoremap <leader>gs :G<CR>
 
+" vim rooter configuration
+let g:rooter_patterns = ['.git']
+
+let g:tex_flavor = 'latex'
 " latex
 autocmd BufWritePost *.tex silent! execute "!pdflatex % >/dev/null 2>&1" | redraw!
 
@@ -61,25 +65,22 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-rooter'
 Plug 'tpope/vim-commentary'
-Plug 'mattn/emmet-vim'
-Plug 'tpope/vim-fugitive'
-Plug 'machakann/vim-highlightedyank'
-Plug 'vifm/vifm.vim'
-Plug 'rust-lang/rust.vim'
-Plug 'preservim/nerdtree'
-Plug 'itchyny/lightline.vim'
 Plug 'ap/vim-css-color'
-Plug 'dart-lang/dart-vim-plugin'
-Plug 'thosakwe/vim-flutter'
+Plug 'tpope/vim-fugitive'
+Plug 'vifm/vifm.vim'
+Plug 'itchyny/lightline.vim'
+Plug 'machakann/vim-highlightedyank'
+Plug 'preservim/nerdtree'
+Plug 'lervag/vimtex'
+Plug 'LnL7/vim-nix'
+" Plug 'mattn/emmet-vim'
+" Plug 'rust-lang/rust.vim'
+" Plug 'dart-lang/dart-vim-plugin'
+" Plug 'thosakwe/vim-flutter'
 " Plug 'mattn/emmet-vim'
 " Plug 'lervag/vimtex'
-Plug 'tpope/vim-fugitive'
-Plug 'machakann/vim-highlightedyank'
-Plug 'vifm/vifm.vim'
 " Plug 'rust-lang/rust.vim'
-Plug 'preservim/nerdtree'
 " Plug 'itchyny/lightline.vim'
-Plug 'ap/vim-css-color'
 " Plug 'dart-lang/dart-vim-plugin'
 " Plug 'thosakwe/vim-flutter'
 
