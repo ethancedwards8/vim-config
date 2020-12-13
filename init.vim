@@ -25,10 +25,14 @@ set noexpandtab
 noremap <SPACE> <Nop>
 let mapleader = " "
 " jumping windows
-nnoremap <leader>h :wincmd h<CR>
-nnoremap <leader>j :wincmd j<CR>
-nnoremap <leader>k :wincmd k<CR>
-nnoremap <leader>l :wincmd l<CR>
+nnoremap <leader>wh :wincmd h<CR>
+nnoremap <leader>wj :wincmd j<CR>
+nnoremap <leader>wk :wincmd k<CR>
+nnoremap <leader>wl :wincmd l<CR>
+nnoremap <leader>wc :wincmd c<CR>
+nnoremap <leader>wv :wincmd v<CR>
+nnoremap <leader>ws :wincmd s<CR>
+nnoremap <leader>wo :wincmd o<CR>
 nnoremap <leader>n :FZF<CR>
 nnoremap <leader>e :Explore<CR>
 
