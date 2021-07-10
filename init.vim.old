@@ -1,5 +1,5 @@
 " basic settings
-syntax enable 
+syntax enable
 set title
 set number relativenumber
 set nowrap
@@ -27,7 +27,8 @@ nnoremap <leader>wc :wincmd c<CR>
 nnoremap <leader>wv :wincmd v<CR>
 nnoremap <leader>ws :wincmd s<CR>
 nnoremap <leader>wo :wincmd o<CR>
-nnoremap <leader>n :FZF<CR>
+
+" Explore
 nnoremap <leader>e :Explore<CR>
 
 " fzf
@@ -50,11 +51,11 @@ let g:rooter_patterns = ['.git']
 let g:tex_flavor = 'latex'
 
 " strip trailing whitespace on save: https://howchoo.com/vim/vim-how-to-remove-trailing-whitespace-on-save
-autocmd BufWritePost *.tex silent! execute "!pdflatex % >/dev/null 2>&1" | redraw!
+autocmd BufWritePre * :%s/\s\+$//e
 
 map <C-n> :NERDTreeToggle<CR>
 
-" imap ii <Esc> 
+" imap ii <Esc>
 map <C-s> :w <CR>
 map <C-n> :NERDTreeToggle<CR>
 
