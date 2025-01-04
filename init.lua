@@ -8,6 +8,7 @@ local map = vim.api.nvim_set_keymap
 -- Basic settings
 vim.cmd('syntax enable')
 vim.cmd('set nowrap')
+vim.cmd('set tabstop=4 shiftwidth=4 expandtab')
 vim.opt.title = true
 vim.opt.number = true
 vim.opt.relativenumber = true
