@@ -151,5 +151,12 @@ return require('packer').startup({function(use)
         use {
                 'LnL7/vim-nix'
         }
+
+        use {
+                'm4xshen/autoclose.nvim',
+                config = function()
+                    require("autoclose").setup()
+                end
+        }
 end
 })
