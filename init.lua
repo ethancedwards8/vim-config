@@ -149,6 +149,11 @@ return require('packer').startup({function(use)
         }
 
         use {
+            'kaarmu/typst.vim',
+            ft = {'typst'}
+        }
+
+        use {
                 'LnL7/vim-nix'
         }
 
