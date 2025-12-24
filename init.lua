@@ -64,51 +64,53 @@ vim.api.nvim_set_keymap('n', '<C-s>', ':w<CR>', {noremap=true})
 
 --- Plugins
 
--- auto install packer
-local install_path = vim.fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
-
-if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-  vim.fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+-- Bootstrap lazy.nvim
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+  local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+  local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+  if vim.v.shell_error ~= 0 then
+    vim.api.nvim_echo({
+      { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
+      { out, "WarningMsg" },
+      { "\nPress any key to exit..." },
+    }, true, {})
+    vim.fn.getchar()
+    os.exit(1)
+  end
 end
+vim.opt.rtp:prepend(lazypath)
 
 -- packages
-return require('packer').startup({function(use)
-        -- let packer manage itself
-        use {
-                'wbthomason/packer.nvim',
-                config = function()
-                        vim.cmd "autocmd BufWritePost init.lua PackerCompile"
-                end
-        }
-
-        use {
+local plugins = {
+        {
                 'junegunn/fzf.vim',
-                requires = {
+                dependencies = {
                         'junegunn/fzf'
                 },
                 config = function()
                         -- FZF
                         vim.api.nvim_set_keymap('n', '<leader>f', ':FZF<CR>', {noremap = true})
                 end
-        }
+        },
 
-        use {
+        {
                 'airblade/vim-rooter',
                 config = function()
                         -- Vim rooter
                         vim.g['rooter_patterns'] = {'.git'}
                 end
-        }
+        },
 
-        use {
+        {
                 'tpope/vim-commentary',
-        }
+        },
 
-        use {
+        {
                 'ap/vim-css-color'
-        }
+        },
 
-        use {
+        {
                 'tpope/vim-fugitive',
                 config = function()
                         -- Fugitive mappings
@@ -117,51 +119,53 @@ return require('packer').startup({function(use)
                         vim.api.nvim_set_keymap('n', '<leader>gp', ':Git pull<CR>', {noremap=true})
                         vim.api.nvim_set_keymap('n', '<leader>gs', ':Git<CR>', {noremap=true})
                 end
-        }
+        },
 
-        use {
+        {
                 'vifm/vifm.vim'
-        }
+        },
 
-        use {
+        {
                 'itchyny/lightline.vim'
-        }
+        },
 
-        use {
+        {
                 'machakann/vim-highlightedyank'
-        }
+        },
 
-        use {
+        {
                 'preservim/nerdtree',
                 config = function()
                         -- Nerdtree
                         vim.api.nvim_set_keymap('n', '<C-n>', ':NERDTreeToggle<CR>', {noremap=true})
                 end
-        }
+        },
 
-        use {
+        {
                 'lervag/vimtex',
                 config = function()
                         -- latex
                         vim.g['tex_flavor'] = 'latex'
 
                 end
-        }
+        },
 
-        use {
+        {
             'kaarmu/typst.vim',
-            ft = {'typst'}
-        }
+            ft = {'typst'},
+            lazy=false,
+        },
 
-        use {
+        {
                 'LnL7/vim-nix'
-        }
+        },
 
-        use {
+        {
                 'm4xshen/autoclose.nvim',
                 config = function()
                     require("autoclose").setup()
                 end
-        }
-end
-})
+        },
+}
+
+require("lazy").setup(plugins, opts)
