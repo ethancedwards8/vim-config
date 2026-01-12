@@ -84,14 +84,20 @@ vim.opt.rtp:prepend(lazypath)
 -- packages
 local plugins = {
         {
-                'junegunn/fzf.vim',
-                dependencies = {
-                        'junegunn/fzf'
-                },
-                config = function()
-                        -- FZF
-                        vim.api.nvim_set_keymap('n', '<leader>f', ':FZF<CR>', {noremap = true})
-                end
+            'nvim-mini/mini.pick',
+            config = function()
+                -- FZF NEW!
+                require('mini.pick').setup({
+                    mappings = {
+                        move_up    = '<C-k>',
+                        move_down  = '<C-j>',
+                    },
+                    options = {
+                        content_from_bottom = true,
+                    }
+                })
+                vim.api.nvim_set_keymap('n', '<leader>f', ':Pick files<CR>', {noremap = true})
+            end
         },
 
         {
@@ -100,11 +106,6 @@ local plugins = {
                         -- Vim rooter
                         vim.g['rooter_patterns'] = {'.git'}
                 end
-        },
-
-        {
-                'tpope/vim-commentary',
-                enable = false, -- try this for a bit to see if i notice/need this
         },
 
         {
