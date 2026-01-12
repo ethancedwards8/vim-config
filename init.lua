@@ -97,6 +97,7 @@ local plugins = {
                     }
                 })
                 vim.api.nvim_set_keymap('n', '<leader>f', ':Pick files<CR>', {noremap = true})
+                vim.o.ignorecase = true
             end
         },
 
